@@ -234,8 +234,8 @@ def sendmail(request):
         cart=Cart.objects.get(id=cart_id)
         C=CartProduct.objects.filter(cart=cart) 
         if cart:
-            my_email = "your email address"
-            my_pass = "your password"
+            my_email = "mailtesting681@gmail.com"
+            my_pass = "mailtest123@"
             fr_email = user
             
             server = smtplib.SMTP('smtp.gmail.com',587)
