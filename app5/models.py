@@ -12,8 +12,8 @@ class Registeration(models.Model):
     State=models.CharField(max_length=20)
     Country=models.CharField(max_length=20)
     Password=models.CharField(max_length=200)
-    def _str_(self):
-        return self.Firstname
+    def __str__(self):
+        return self.Email
 
 
 class Contact(models.Model):
@@ -54,10 +54,8 @@ class Cart(models.Model):
     customer=models.ForeignKey(Registeration, on_delete=models.SET_NULL, null=True, blank=True)
     total=models.PositiveIntegerField(default=0)
     created_date=models.DateTimeField(auto_now_add=True)
-
     def __str__(self):
         return "Cart:" + str(self.id)
-
 
 class CartProduct(models.Model):
     cart=models.ForeignKey(Cart,on_delete=models.CASCADE)

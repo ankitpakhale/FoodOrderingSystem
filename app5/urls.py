@@ -20,3 +20,5 @@ urlpatterns = [
     path('confirmation/',confirmation,name="confirmation"),
     path('sendmail/',sendmail,name='sendmail')
 ]
+
+

@@ -222,7 +222,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All R
 </p>
 			</div>
 		</div>
+		{% if msg %}
+		<script>alert('{{msg}}')</script>
+		{% endif %}
 	</footer>
+	
+
 	<!-- End footer Area -->
 
 

@@ -9,6 +9,8 @@ from .forms import CartAddProductForm
 from django.db.models import Q
 import smtplib
 import email.message
+import razorpay
+
 
 def mainPage(request):
     if request.session.get('Email'):
@@ -42,9 +44,11 @@ def login(request):
                 messages.success(request,'done')
                 return redirect('main')
             else:
-                return HttpResponse("Wrong Password!!!")
+                msg = 'Please Enter Same Password'
+                return render(request , 'login.html',{'msg':msg})
         except:
-                return HttpResponse("Wrong Email ID !!!")
+            msg = 'Wrong Email ID !!!'
+            return render(request , 'login.html',{'msg':msg})            
     return render(request,'login.html')
 
 def logout(request):
@@ -162,7 +166,6 @@ class ManageCartView(View):
             pass
         return redirect ("mycart")
 
-
 class EmptyCartView(View):
     def get(self,request,*args,**kwargs):
         cart_id=request.session.get("cart_id", None)
@@ -230,10 +233,109 @@ def confirmation(request):
         user=request.session['Email']
         z=Registeration.objects.get(Email=user)
         cart_id=request.session.get("cart_id", None)
-        cart=Cart.objects.get(id=cart_id)  
+        cart=Cart.objects.get(id=cart_id)
+          
+        razorpay_amount = cart.total*100
+        
+        C=CartProduct.objects.filter(cart=cart) 
+        
+        if request.method == "POST":
+            client = razorpay.Client(
+            auth=("rzp_test_qDwTmKnksUVsaC", "QOr66ZQbsLdNZOmrV4YGX50V"))
+            payment = client.order.create({'amount': razorpay_amount, 'currency': 'INR',
+                                    'payment_capture': '1'})
+            
+    # --------------------------------------------------------------
+            if cart:
+                my_email = "mailtesting681@gmail.com"
+                my_pass = "mailtest123@"
+                fr_email = user
+                
+                server = smtplib.SMTP('smtp.gmail.com',587)
+                mead_data = ""
+                front = """
+                <!DOCTYPE html>
+                <html>
+                    <body>
+                        <div>
+                            <h2>Name : """ + z.Firstname + """</h2>
+                            <h2>Email : """ + user + """</h2>
+                            <h2>Order No: """ + str(cart_id) + """</h2>
+                        </div>
+                        <br>
+                        <div>
+                            <table border="2">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Product Name
+                                        </th>
+                                        <th>
+                                            Product Qty
+                                        </th>
+                                        <th>
+                                            Product Price
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>"""
+                                
+                for i in C:
+                    mead_data += """<tr>
+                    <td>""" + str(i.product.title) + """ </td>
+                    <td>""" + str(i.quantity) + """ </td> 
+                    <td>""" + str(i.product.selling_price) + """</td></td>
+                    </tr> """
+                    
+                ended = """<tr>
+                <td colspan="2">
+                You Have Paid
+                </td><td> """ + str(cart.total) + """
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                        <br>
+                        <div>
+                            <h3>Thank you for visiting ....</h3>
+                        </div>
+                    </body>
+                </html>
+                """
+                email_content = front + mead_data + ended
+                print(email_content)
+                
+                msg = email.message.Message()
+                msg['Subject'] = 'Your Bill' 
+                msg['From'] = my_email
+                msg['To'] = fr_email
+                password = my_pass
+                msg.add_header('Content-Type', 'text/html')
+                msg.set_payload(email_content)
+                s = smtplib.SMTP('smtp.gmail.com',587)
+                s.starttls()
+                s.login(msg['From'], password)
+                s.sendmail(msg['From'], [msg['To']], msg.as_string())
+                print("ordered succssfully")
+                return redirect('emptycart')
+        
     else:
         return redirect('login')
-    return render(request,'confirmation.html',{'cart':cart,'z':z})
+    return render(request,'confirmation.html',{'cart':cart,'z':z, 'razorpay_amount':razorpay_amount})
+
+
+# def confirmation_BACKUP(request):
+#     if request.session.get('Email'):
+#         user=request.session['Email']
+#         z=Registeration.objects.get(Email=user)
+#         cart_id=request.session.get("cart_id", None)
+#         cart=Cart.objects.get(id=cart_id)
+        
+#     else:
+#         return redirect('login')
+#     return render(request,'confirmation.html',{'cart':cart,'z':z})
+
 
 def sendmail(request):
     if request.session.get('Email'):
@@ -241,6 +343,7 @@ def sendmail(request):
         z=Registeration.objects.get(Email=user)
         cart_id=request.session.get("cart_id", None)
         cart=Cart.objects.get(id=cart_id)
+        
         C=CartProduct.objects.filter(cart=cart) 
         if cart:
             my_email = "mailtesting681@gmail.com"
@@ -314,6 +417,7 @@ def sendmail(request):
             s.login(msg['From'], password)
             s.sendmail(msg['From'], [msg['To']], msg.as_string())
             return redirect('main')
+        
     else:
         return redirect('login')
     return render(request,'confirmation.html',{'cart':cart,'z':z})
