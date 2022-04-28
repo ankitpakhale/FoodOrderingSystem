@@ -35,14 +35,18 @@
 <body>
 
 	<!-- Start Header Area -->
+	
+	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px" src="{% static 'img/login1.jpeg' %}" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px"
+							src="{% static 'img/login1.jpeg' %}" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -51,34 +55,20 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-								</ul>
-							</li>
-							
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-                                 <ul class="dropdown-menu">
-									{% if z is not None %}
-									<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-									{% else %}
-									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-									{% endif %}
-								</ul>
-							</li>
-							<li class="nav-item active"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'category' %}">Shop
+									Category</a></li>
+
+							<!-- <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li> -->
+							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="{% url  'mycart' %}" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-						</ul>
+							<li class="nav-item"><a href="{% url 'mycart' %}" class="cart"><span
+								class="ti-bag"></span></a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="nav-item"><a href="{% url 'logout' %}" class=""><span
+											class="lnr lnr-exit"></span></a></li>
+							</ul>
 					</div>
 				</div>
 			</nav>
@@ -100,11 +90,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Contact Us</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Contact</a>
-					</nav>
+
 				</div>
 			</div>
 		</div>
@@ -113,8 +99,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Product added to cart successfully.</h3>
-                <a class="btn btn-primary" href="{% url 'mycart' %}" role="button">Cart</a>
+                <h3 class="mt-5 mb-5 text-center">Product added to cart successfully.</h3>
+                
+				<center>
+					<a class="primary-btn mb-5" href="{% url 'mycart' %}" role="button">Go to Cart</a>
+				</center>
             </div>
         </div>
 	</div>

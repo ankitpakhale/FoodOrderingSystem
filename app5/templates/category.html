@@ -39,9 +39,11 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px" src="{% static 'img/login1.jpeg' %}" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px"
+							src="{% static 'img/login1.jpeg' %}" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -50,37 +52,23 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
-							<li class="nav-item submenu dropdown active">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item active"><a class="nav-link" href="{% url 'category' %}">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="{% url 'mycart' %}">Shopping Cart</a></li>
-								</ul>
-							</li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'category' %}">Shop
+									Category</a></li>
+
+							<!-- <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li> -->
 							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-								 <ul class="dropdown-menu">
-									{% if z is not None %}
-									<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-									{% else %}
-									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-									{% endif %}
-								</ul>
-							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="{% url 'mycart' %}" class="cart"><span class="ti-bag"></span></a></li>
-							<!-- <li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li> -->
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-							<!-- <input type="text" name="search" class="form-control fa fa-search" placeholder="search .."> -->
-						</ul>
+							<li class="nav-item"><a href="{% url 'mycart' %}" class="cart"><span
+								class="ti-bag"></span></a></li>
+								<li class="nav-item">
+									<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="nav-item"><a href="{% url 'logout' %}" class=""><span
+											class="lnr lnr-exit"></span></a></li>
+							</ul>
 					</div>
 				</div>
 			</nav>
@@ -92,11 +80,9 @@
 					<button type="submit" class="btn"></button>
 					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
 				</form>
-
 			</div>
 		</div>
 	</header>
-	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
@@ -141,9 +127,9 @@
 					<div class="row">
 						{% if form1 %}
 							{% for cat in form1 %}
-						<div class="col-lg-4 col-md-6">
+						<div class="col-lg-3 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="{{ cat.image.url }}" alt="">
+								<img class="img-fluid" src="{{ cat.image.url }}" style="height: 200px; width: 200px;" alt="">
 								<div class="product-details">
 									<h6><a href="{% url 'prodetails' cat.title %}">{{ cat.title }}</a> </h6>
 									<div class="price">

@@ -207,7 +207,10 @@ def contact(request):
         model.subject=request.POST['subject']
         model.message=request.POST['message']
         model.save()
-        return redirect('main')
+        # return redirect('main')
+    
+        msg = 'Your Response Successfully saved'
+        return render(request , 'contact.html',{'msg':msg})
 
     return render(request,'contact.html')
 
@@ -318,7 +321,15 @@ def confirmation(request):
                 s.login(msg['From'], password)
                 s.sendmail(msg['From'], [msg['To']], msg.as_string())
                 print("ordered succssfully")
-                return redirect('emptycart')
+                
+                cart_id=request.session.get("cart_id", None)
+                if cart_id:
+                    cart=Cart.objects.get(id=cart_id)
+                    cart.cartproduct_set.all().delete()
+                    cart.total=0
+                    cart.save()
+                    
+                return redirect('PAYMENT')
         
     else:
         return redirect('login')
@@ -336,6 +347,10 @@ def confirmation(request):
 #         return redirect('login')
 #     return render(request,'confirmation.html',{'cart':cart,'z':z})
 
+
+def payment(request):
+        mainMsg = "Thanks for choosing our services"
+        return(render(request,'paymentSuccessPage.html',{'mainHeading':mainMsg}))
 
 def sendmail(request):
     if request.session.get('Email'):

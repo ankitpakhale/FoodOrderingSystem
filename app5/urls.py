@@ -1,6 +1,6 @@
 from .views import login,mainPage,category,productview,category,categorywise,logout,AddtoCartView,ManageCartView,EmptyCartView
 
-from .views import cartview, contact, signup, confirmation, sendmail
+from .views import cartview, contact, signup, confirmation, sendmail, payment
 
 from django.urls import path
 
@@ -18,7 +18,8 @@ urlpatterns = [
     path("empty_cart/",EmptyCartView.as_view(), name="emptycart"),
     path('contact/',contact,name='contact'),
     path('confirmation/',confirmation,name="confirmation"),
-    path('sendmail/',sendmail,name='sendmail')
+    path('sendmail/',sendmail,name='sendmail'),
+    path('pay/',payment,name='PAYMENT'),
 ]
 
 
