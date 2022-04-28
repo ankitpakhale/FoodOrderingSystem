@@ -42,13 +42,13 @@ def login(request):
                 messages.success(request,'done')
                 return redirect('main')
             else:
-                messages.error(request,"Wrong password")
+                return HttpResponse("Wrong Password!!!")
         except:
-            messages.info(request,'User not found') 
+                return HttpResponse("Wrong Email ID !!!")
     return render(request,'login.html')
 
 def logout(request):
-    del request.session['email']
+    del request.session['Email']
     print('User logged out successfully')
     return redirect('login')
 
@@ -197,6 +197,15 @@ def cartview(request):
 #         return context
 
 def contact(request):
+    if request.method=='POST':
+        model=Contact()
+        model.name=request.POST['name']
+        model.email=request.POST['email']
+        model.subject=request.POST['subject']
+        model.message=request.POST['message']
+        model.save()
+        return redirect('main')
+
     return render(request,'contact.html')
 
 def signup(request):

@@ -16,7 +16,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Homemade Dessert Shop</title>
 	
 	<!--
 		CSS
@@ -42,16 +42,16 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 40px; width: 40px" src="{% static 'img/img1.png' %}" alt=""></a>
+					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px" src="{% static 'img/login1.jpeg' %}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					{% if z is not None %}
+					<!-- {% if z is not None %}
 					<i class="fa fa-user fa-2x"></i>
-					{% endif %}
+					{% endif %} -->
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
@@ -108,8 +108,7 @@
 							<div class="col-lg-5 col-md-6">
 								<div class="banner-content">
 									<h1>Nike New <br>Collection!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<p>This is a website which helps Customer can be brought best quality product and there is a different type of Module which already exist in this website like Admin, Vendor, Customer. It is useful in the way that it makes an easier way to get niche (unique) products at cheapest price at doorsteps through our website.</p>
 									<div class="add-bag d-flex align-items-center">
 										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
 										<span class="add-text text-uppercase">Add to Bag</span>
@@ -193,6 +192,7 @@
 							<h1>Latest Products</h1>
 						</div>
 					</div>
+				
 				</div>
 				<div class="row">
 					{% for p in model %}
@@ -200,7 +200,7 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							
-							<img class="img-fluid" src="{{ p.image.url }}" alt="">
+							<img class="img-fluid" src="{{ p.image.url }}" style="height: 200px; width: 200px;" alt="">
 							<div class="product-details">
 								<h6><a href="{% url 'prodetails' p.title %}">{{ p.title }}</a></h6>
 								<div class="price">
@@ -238,11 +238,11 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="single-product">
 							
-							<img class="img-fluid" src="{{ p.image.url }}" alt="">
+							<img style="height: 40px; width: 40px" class="img-fluid" src="{{ p.image.url }}"  >
 							<div class="product-details">
 								<h6><a href="{% url 'prodetails' p.title %}">{{ p.title }}</a></h6>
 								<div class="price">
-									<h6> Rs.{{ p.selling_price }}</h6>
+									<h6> Rs.{{ p.selling_price }} dfgh</h6>
 									<h6 class="l-through">Rs.{{ p.marked_price }}</h6>
 								</div>
 							</div>
@@ -293,15 +293,14 @@
 					<div class="single-footer-widget">
 						<h6>About Us</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+							This is a website which helps Customer can be brought best quality product and there is a different type of Module which already exist in this website like Admin, Vendor, Customer. It is useful in the way that it makes an easier way to get niche (unique) products at cheapest price at doorsteps through our website.
 						</p>
 					</div>
 				</div>
 				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
-						<h6>Newsletter</h6>
-						<p>Stay update with our latest</p>
+						<h6>Email Us</h6>
+						<p>mansib998@gmail.com</p>
 						<div class="" id="mc_embed_signup">
 
 							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
@@ -331,6 +330,7 @@
 					<div class="single-footer-widget mail-chimp">
 						<h6 class="mb-20">Instragram Feed</h6>
 						<ul class="instafeed d-flex flex-wrap">
+							<a href="#"><i class="fa fa-instagram"></i></a>
 							<li><img src="{% static 'img/i1.jpg' %}" alt=""></li>
 							<li><img src="{% static 'img/i2.jpg' %}" alt=""></li>
 							<li><img src="{% static 'img/i3.jpg' %}" alt=""></li>
@@ -356,9 +356,8 @@
 				</div>
 			</div>
 			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				<p class="footer-text m-0">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved.
 </p>
 			</div>
 		</div>

@@ -16,7 +16,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Homemade Dessert Shop</title>
 
 	<!--
 		CSS
@@ -120,38 +120,38 @@
 						<form class="row login_form" method="POST">
 							{% csrf_token %}
 							<div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Firstname'">
+								<input required type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Firstname'">
 							</div>
 							<div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lastname'">
+								<input required type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lastname'">
                             </div>
                             <div class="col-md-12 form-group">
-								<textarea cols="50" rows="4" class="form-control" id="Address" name="Address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'"></textarea>
+								<textarea required cols="50" rows="4" class="form-control" id="Address" name="Address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'"></textarea>
 							</div>
 							<div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="City" name="City" placeholder="City" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'">
+								<input required type="text" class="form-control" id="City" name="City" placeholder="City" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'">
                             </div>
                             <div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="State" name="State" placeholder="State" onfocus="this.placeholder = ''" onblur="this.placeholder = 'State'">
+								<input required type="text" class="form-control" id="State" name="State" placeholder="State" onfocus="this.placeholder = ''" onblur="this.placeholder = 'State'">
 							</div>
 							<div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="Country" name="Country" placeholder="Country" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Country'">
+								<input required type="text" class="form-control" id="Country" name="Country" placeholder="Country" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Country'">
                             </div>
                             <div class="col-md-6 form-group">
-								<input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="Mobile" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mobile'">
+								<input required type="text" pattern="[0-9]{10}" title="Only 10 digit required" class="form-control" id="Mobile" name="Mobile" placeholder="Mobile" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mobile'">
 							</div>
 							<div class="col-md-6 form-group">
-								<input type="email" class="form-control" id="Email" name="Email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+								<input required type="email" class="form-control" id="Email" name="Email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                             </div>
                             <div class="col-md-6 form-group">
-								<input type="number" class="form-control" id="Pincode" name="Pincode" placeholder="Pincode" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pincode'">
+								<input required type="text" pattern="[0-9]{6}" title="Only correct pincode" class="form-control" id="Pincode" name="Pincode" placeholder="Pincode" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pincode'">
                             </div>
                             <div class="col-md-6 form-group">
-								<input type="password" class="form-control" id="Password" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input required type="password" class="form-control" id="Password" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
                             </div>
                             
 							<div class="col-lg-12 form-group">
-								<button type="submit" value="submit" class="primary-btn">Log In</button>
+								<button required type="submit" value="submit" class="primary-btn">Log In</button>
 							</div>
 						</form>
 					</div>
@@ -169,15 +169,14 @@
 					<div class="single-footer-widget">
 						<h6>About Us</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+						
 						</p>
 					</div>
 				</div>
 				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
-						<h6>Newsletter</h6>
-						<p>Stay update with our latest</p>
+						<h6>Email Us</h6>
+						<p>mansib998@gmail.com</p>
 						<div class="" id="mc_embed_signup">
 
 							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
@@ -207,6 +206,7 @@
 					<div class="single-footer-widget mail-chimp">
 						<h6 class="mb-20">Instragram Feed</h6>
 						<ul class="instafeed d-flex flex-wrap">
+							<a href="#"><i class="fa fa-instagram"></i></a>
 							<li><img src="{% static 'img/i1.jpg' %}" alt=""></li>
 							<li><img src="{% static 'img/i2.jpg' %}" alt=""></li>
 							<li><img src="{% static 'img/i3.jpg' %}" alt=""></li>
@@ -233,7 +233,7 @@
 			</div>
 			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved.
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
 			</div>

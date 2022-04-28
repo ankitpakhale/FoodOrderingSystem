@@ -12,10 +12,17 @@ class Registeration(models.Model):
     State=models.CharField(max_length=20)
     Country=models.CharField(max_length=20)
     Password=models.CharField(max_length=200)
-
     def _str_(self):
-        return self.Email
+        return self.Firstname
 
+
+class Contact(models.Model):
+    name=models.CharField(max_length=10)
+    email=models.EmailField()
+    subject=models.CharField(max_length=20)
+    message=models.TextField()
+    def __str__(self):
+        return self.name
 
 class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -58,6 +65,9 @@ class CartProduct(models.Model):
     rate=models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
     subtotal= models.PositiveIntegerField()
+
+    def __str__(self):
+         return self.product
 
     def __str__(self):
         return "Cart:" + str(self.cart.id) + "CartProduct:" + str(self.id)

@@ -16,7 +16,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Homemade Dessert Shop</title>
 
 	<!--
             CSS
@@ -38,7 +38,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 40px; width: 40px" src="{% static 'img/img1.png' %}" alt=""></a>
+					<a class="navbar-brand logo_h" href="{% url 'main' %}"><img style="height: 60px; width: 60px" src="{% static 'img/login1.jpeg' %}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -111,9 +111,7 @@
 	<!--================Contact Area =================-->
 	<section class="contact_area section_gap_bottom">
 		<div class="container">
-			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
-			 data-mlat="40.701083" data-mlon="-74.1522848">
-			</div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14680.195687935346!2d72.5559743!3d23.0953049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9d2ef0e077d7%3A0x893d1817b1493105!2sBrainyBeam%20Technologies%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1651044634757!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	</div>
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="contact_info">
@@ -135,7 +133,8 @@
 					</div>
 				</div>
 				<div class="col-lg-9">
-					<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+					<form class="row contact_form" method="POST" id="contactForm" novalidate="novalidate">
+						{% csrf_token %}
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
@@ -153,7 +152,7 @@
 							</div>
 						</div>
 						<div class="col-md-12 text-right">
-							<button type="submit" value="submit" class="primary-btn">Send Message</button>
+							<input type="submit" value="submit" class="primary-btn">
 						</div>
 					</form>
 				</div>
@@ -170,15 +169,14 @@
 					<div class="single-footer-widget">
 						<h6>About Us</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+							This is a website which helps Customer can be brought best quality product and there is a different type of Module which already exist in this website like Admin, Vendor, Customer. It is useful in the way that it makes an easier way to get niche (unique) products at cheapest price at doorsteps through our website.
 						</p>
 					</div>
 				</div>
 				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
-						<h6>Newsletter</h6>
-						<p>Stay update with our latest</p>
+						<h6>Email Us</h6>
+						<p>mansib998@gmail.com</p>
 						<div class="" id="mc_embed_signup">
 
 							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
@@ -234,7 +232,7 @@
 			</div>
 			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved. 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
 			</div>
